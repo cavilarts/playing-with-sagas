@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getAlbums } from "../../api/actions/albums-action";
+import {
+  confirmFetchRequest,
+  getAlbums,
+} from "../../api/actions/albums-action";
 
 import { albumState } from "../../api/reducers/albums-reducer";
 
@@ -14,6 +17,9 @@ const Albums = () => {
       <button
         onClick={() => {
           dispatch(getAlbums());
+          setTimeout(() => {
+            dispatch(confirmFetchRequest());
+          }, 2000);
         }}
       >
         Load Albums
